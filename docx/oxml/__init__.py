@@ -202,6 +202,9 @@ register_element_cls('w:r',  CT_R)
 register_element_cls('w:t',  CT_Text)
 register_element_cls('w:delText', CT_DelText)
 
+from .text import CT_Comment
+register_element_cls('w:comment', CT_Comment)
+
 from .text.delrun import CT_DR
 register_element_cls('w:del', CT_DR)
 

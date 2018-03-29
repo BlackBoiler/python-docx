@@ -32,6 +32,7 @@ class CT_Body(BaseOxmlElement):
     tbl = ZeroOrMore('w:tbl', successors=('w:sectPr',))
     sectPr = ZeroOrOne('w:sectPr', successors=())
 
+
     def add_section_break(self):
         """
         Return the current ``<w:sectPr>`` element after adding a clone of it

@@ -71,8 +71,9 @@ class CT_R(BaseOxmlElement):
 
     def copy_rpr(self,rprCopy):
         rPr = self.get_or_add_rPr()
-        for p in rprCopy[:]:
-            rPr.append(p)
+        if rprCopy is not None:
+            for p in rprCopy[:]:
+                rPr.append(p)
 
     @property
     def rpr(self):
@@ -80,7 +81,7 @@ class CT_R(BaseOxmlElement):
 
     @rpr.setter
     def rpr(self, value):
-        self. copy_rpr(value)
+        self.copy_rpr(value)
     @property
     def style(self):
         """
