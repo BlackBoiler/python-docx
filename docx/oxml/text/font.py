@@ -328,12 +328,24 @@ class CT_RPr(BaseOxmlElement):
             return None
         return b.val
 
+    @b_val.setter
+    def b_val(self, value):
+        self._remove_b()
+        if value is not None:
+            self._add_b().val = value
+
     @property
     def i_val(self):
         i = self.i
         if i is None:
             return None
         return i.val
+
+    @i_val.setter
+    def i_val(self, value):
+        self._remove_i()
+        if value is not None:
+            self._add_i().val = value
 
     @property
     def caps_val(self):
