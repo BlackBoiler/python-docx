@@ -3,10 +3,9 @@
 Release History
 ---------------
 
-X.Y.Z (YYYY-MM-DD)
+1.1.0 (2025-03-25)
 ++++++++++++++++++
-
-- DEV-4646: add color_val property to ``CT_RPr``
+- DEV-4646: add new color_val property to ``CT_RPr``
 
 
 1.0.1 (2024-10-11)
