@@ -142,6 +142,10 @@ class RGBColor(Tuple[int, int, int]):
         """Return a hex string rgb value, like '3C2F80'."""
         return "%02X%02X%02X" % self
 
+    def __reduce__(self):
+        # Return a tuple of (callable, args) that will recreate this object
+        return RGBColor, (self[0], self[1], self[2])
+
     @classmethod
     def from_string(cls, rgb_hex_str: str) -> RGBColor:
         """Return a new instance from an RGB color hex string like ``'3C2F80'``."""
