@@ -398,6 +398,13 @@ class CT_RPr(BaseOxmlElement):
             return None
         return caps.val
 
+    @property
+    def color_val(self):
+        color = self.color
+        if color is None:
+            return None
+        return color.val
+
 
 class CT_Underline(BaseOxmlElement):
     """`<w:u>` element, specifying the underlining style for a run."""
