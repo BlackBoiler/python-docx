@@ -3,6 +3,11 @@
 Release History
 ---------------
 
+1.2.0 (2025-05-22)
+++++++++++++++++++
+- DEV-4746: Support Serialization of python-docx/ lxml.Etree elements
+
+
 1.1.0 (2025-03-25)
 ++++++++++++++++++
 - DEV-4646: add new color_val property to ``CT_RPr``

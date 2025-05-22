@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Dict, Type, cast
+import copyreg
 
 from lxml import etree
 
@@ -18,6 +19,21 @@ if TYPE_CHECKING:
 element_class_lookup = etree.ElementNamespaceClassLookup()
 oxml_parser = etree.XMLParser(remove_blank_text=True, resolve_entities=False)
 oxml_parser.set_element_class_lookup(element_class_lookup)
+
+# -- serialization support --
+def _pickle_element(elem):
+    """Function for pickling lxml.etree._Element objects."""
+    xml_str = etree.tostring(elem)
+    return _deserialize_oxml_element, (xml_str,)
+
+
+def _deserialize_oxml_element(xml_str):
+    """Deserialize bytes back into an object using parse_xml."""
+    return parse_xml(xml_str)
+
+
+copyreg.pickle(etree._Element, _pickle_element)
+# --
 
 
 def parse_xml(xml: str | bytes) -> "BaseOxmlElement":
@@ -39,6 +55,7 @@ def register_element_cls(tag: str, cls: Type["BaseOxmlElement"]):
     nspfx, tagroot = tag.split(":")
     namespace = element_class_lookup.get_namespace(nsmap[nspfx])
     namespace[tagroot] = cls
+    copyreg.pickle(cls, _pickle_element)
 
 
 def OxmlElement(
