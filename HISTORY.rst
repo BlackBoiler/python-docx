@@ -3,8 +3,9 @@
 Release History
 ---------------
 
-X.Y.Z (YYYY-MM-DD)
+1.2.0 (2025-05-22)
 ++++++++++++++++++
+- DEV-4746: Support Serialization of python-docx/ lxml.Etree elements
 
 
 
